@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="startSection" class="card container">
+        <h1 class="text-center titleMain gradient-text">Игра "Угадай число"</h1>
+        <div class="d-flex flex-column gap-3 mt-3 align-items-center container">
+            <form method="POST" class="d-flex flex-column gap-3 mt-3 align-items-center container">
+                <div class="inputs">
+                    <div class="text-center inputContainer">
+                        <label for="rangeA">Минимальное значение:</label>
+                        <input type="number" id="rangeA" name="rangeA" class="form-control w-25 d-inline" tabindex="0" required>
+                    </div>
+                    <div class="text-center inputContainer">
+                        <label for="rangeB">Максимальное значение:</label>
+                        <input type="number" id="rangeB" name="rangeB" class="form-control w-25 d-inline" tabindex="0" required>
+                    </div>
+                </div>
+                {% if warning %}
+                    <p id="warningStart" class="text-center text-danger m-0">{{ warning }}</p>
+                {% else %}
+                    <p id="warningStart" class="text-center text-danger m-0"></p>
+                {% endif %}
+                <button id="startGame" type="submit" class="btn mt-3" style="width: max-content;" tabindex="0">Начать игру</button>
+            </form>
+            <div class="card rules" style="box-shadow: none;">
+                <b>Правила игры:<br/></b>
+                <span>Вы установили интервал, в котором компьютер загадал число. </span>
+                <span>Вам нужно отгадать это число. </span>
+                <span>На это есть log<sub>2</sub>(B-A+1) попыток,</span>
+                <span>где В - Ваше максимальное число, </span>
+                <span>а А - минимальное. </span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

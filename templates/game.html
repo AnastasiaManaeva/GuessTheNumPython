@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="gameSection" class="card container">
+    <h2 class="text-center titleMain gradient-text">Попробуйте угадать число!</h2>
+    <div class="d-flex align-items-center justify-content-between mt-3">
+        <p id="interval" class="text-start text-secondary mb-0">Диапазон: от {{ range_a }} до {{ range_b }}</p>
+        <form method="POST" action="/restart">
+            <button type="submit" id="restart" class="btn" style="width: max-content; height: max-content;" tabindex="0">Начать игру заново</button>
+        </form>
+    </div>
+    <div class="d-flex gap-5 mt-3 justify-content-between gameBody">
+        <div class="card historyContainer">
+            <p class="text-start m-0 fw-bolder historyTitle">История Ваших попыток: <br/></p>
+            {% if history == [] %}
+                <p id="historyDel" class="text-secondary m-0 fst-italic" >пусто</p>
+            {% endif %}
+            <ul id="history" class="m-0">
+                {% for user_guess in history %}
+                    <li>{{ user_guess }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <form method="POST" action="/game?range_a={{ range_a }}&range_b={{ range_b }}">
+                <div class="inputGame">
+                    <input type="number" name="userGuess" id="userGuess" class="form-control w-100 d-inline" placeholder="Введите число" tabindex="0" {% if disabled %} disabled {% endif %} autofocus>
+                    <button id="submitGuess" class="btn" tabindex="0" {% if disabled %} disabled {% endif %} >Проверить</button>
+                </div>
+            </form>
+            <p id="warningGame" class="text-center text-danger m-0"></p>
+            <p id="feedback" class="mt-3 text-center text-secondary">
+                {% if feedback %}
+                    {{ feedback }}
+                {% endif %}
+            </p>
+            <p id="attemptsLeft" class="mb-0 text-center">Осталось: {{attempts_left}} попыток.</p>
+        </div>
+        <div class="card rules" style="box-shadow: none;">
+            <b>Правила игры:<br></b>
+            <span>Вы установили интервал, в котором компьютер загадал число. </span>
+            <span>Вам нужно отгадать это число. </span>
+            <span>На это есть log<sub>2</sub>(B-A+1) попыток,</span>
+            <span>где В - Ваше максимальное число, </span>
+            <span>а А - минимальное. </span>
+        </div>
+    </div>
+</div>
+{% endblock %}

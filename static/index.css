@@ -1,0 +1,273 @@
+@font-face {
+    font-family: 'Parkinsans';
+    src: url('../Parkinsans/Parkinsans-Regular.ttf') format('ttf'),
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "Parkinsans";
+    font-weight: 400;
+    font-style: normal;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 45s ease infinite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(
+        45deg,
+        #ee7752 25%,
+        #e73c7e 45%,
+        #23a6d5 60%,
+        #23d5ab
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #0b2349;
+}
+
+.card {
+    box-shadow: 0px 1px 3px 1px #00000026, 0px 1px 2px 0px #0000004d;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.inputs {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#startGame,
+#restart {
+    border-radius: 8px;
+    outline: 1px solid #23a6d5;
+    color: #23a6d5;
+}
+
+#startGame:hover,
+#restart:hover {
+    background-color: #23a6d5;
+    color: #fff;
+}
+
+#startGame:focus,
+#restart:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+#submitGuess {
+    border-radius: 8px;
+    outline: 1px solid #23d5ab;
+    color: #23d5ab;
+}
+
+#submitGuess:hover {
+    background-color: #23d5ab;
+    color: #fff;
+}
+
+#submitGuess:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.inputGame {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+#gameSection {
+    padding: 40px;
+}
+
+.historyContainer {
+    width: 25%;
+    box-shadow: none;
+}
+
+#interval,
+.historyTitle,
+.rules,
+#restart,
+#submitGuess,
+#userGuess,
+#warningGame,
+#feedback,
+#attemptsLeft,
+#warningStart {
+    font-size: calc(0.325rem + 0.9vw); /* 16px */
+}
+
+#historyDel,
+#history li {
+    font-size: calc(0.229rem + 0.9vw); /* 14px */
+}
+
+@media (min-width: 1200px) {
+    #interval,
+    .historyTitle,
+    .rules,
+    #restart,
+    #submitGuess,
+    #userGuess,
+    #warningGame,
+    #feedback,
+    #attemptsLeft,
+    #warningStart {
+        font-size: 1rem; /* 16px */
+    }
+
+    #historyDel,
+    #history li {
+        font-size: 0.87rem; /* 14px */
+    }
+}
+
+@media (min-width: 576px) {
+    .inputs {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 900px;
+    }
+    .gameBody {
+        gap: 20px !important;
+    }
+    .historyContainer {
+        width: 40%;
+    }
+    .inputGame {
+        flex-direction: column;
+    }
+    .rules {
+        width: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 700px;
+    }
+    .inputs {
+        flex-direction: column;
+        align-items: normal;
+    }
+    .inputContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #startGame {
+        margin-top: 0 !important;
+    }
+
+    .gameBody {
+        flex-direction: column;
+    }
+    .historyContainer {
+        width: 60%;
+        padding: 15px 15px 10px;
+    }
+    .inputGame {
+        flex-direction: row;
+    }
+    .rules {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 500px;
+    }
+    .historyContainer {
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .rules {
+        padding: 10px;
+        border-radius: 8px;
+    }
+    #gameSection {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 340px;
+    }
+    .titleMain {
+        font-size: 1.375rem;
+    }
+    .inputs {
+        font-size: 0.87rem;
+    }
+
+    #interval,
+    .historyTitle,
+    .rules,
+    #restart,
+    #submitGuess,
+    #userGuess,
+    #warningGame,
+    #feedback,
+    #attemptsLeft,
+    #warningStart {
+        font-size: 0.75rem;
+    }
+    #historyDel,
+    #history li {
+        font-size: 0.625rem;
+    }
+
+    #startGame {
+        font-size: 1rem;
+    }
+    .titleMain div {
+        gap: 0 !important;
+    }
+    .historyContainer {
+        width: 100%;
+    }
+    .inputGame {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+    }
+    #userGuess {
+        width: 75% !important;
+    }
+    #gameSection {
+        margin-top: 24px !important;
+    }
+}
